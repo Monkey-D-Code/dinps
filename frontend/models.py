@@ -29,3 +29,14 @@ class Recruiters(models.Model):
 
     def __str__(self):
         return self.recName
+
+
+
+class ImageSlider(models.Model):
+
+    captionHeading = models.CharField(max_length=264 , unique=True)
+    captionDetails = models.CharField(max_length=264)
+    imageUrl = models.CharField(max_length=264)
+
+    def __str__(self):
+        return self.captionHeading

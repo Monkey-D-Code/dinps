@@ -1,12 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from . models import Service,Recruiters,Affiliation,ImageSlider
 # Create your views here.
 def home(request):
+    allServices = Service.objects.order_by('serviceName')
+    allSliderImages = ImageSlider.objects.order_by('captionHeading')
     data ={
         'PageTitle' : "Durgapur Institute of Nursing",
         'heading' : "Durgapur Institute of Nursing and Paramedical Science",
         'sub_heading_1' : "(College of Nursing, College of Management & College of Education)",
         'sub_heading_2' : "Supported by: INC,HNSC,KNC,WBNC,UGC,NCTE, Regd.Under West Bengal Paramedical Association",
+        "all_services" : allServices,
+        'all_slider_images' : allSliderImages,
     }
     return render(request , 'frontend/home.html' , context=data)
 
